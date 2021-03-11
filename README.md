@@ -15,7 +15,7 @@ eclipse翻译插件，支持最新版eclipse 2020-12
 
 2、填写百度翻译API的APP_ID和SECRET_KEY
 
-3、百度翻译API申请链接（标准版免费）：http://api.fanyi.baidu.com/api/trans/product/prodinfo
+3、百度翻译API链接（标准版可免费申请）：http://api.fanyi.baidu.com/api/trans/product/prodinfo
 
 ## 三、使用方式
 
