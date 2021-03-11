@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.commands">
+      	<command 
+      		id="translate" 
+      		name="Translate">
+      	</command>
+   	</extension>
+   	<extension point="org.eclipse.ui.handlers">
+      	<handler
+      		commandId="translate"
+        	class="translate.handler.TranslateHandler">
+      	</handler>
+   	</extension>
+   	<extension point="org.eclipse.ui.bindings">
+      	<key
+        	commandId="translate"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+5">
+      	</key>
+   	</extension>
+   	<extension point="org.eclipse.ui.menus">
+    	<menuContribution locationURI="popup:org.eclipse.ui.popup.any">
+            <command
+            	icon="icons/icon.png" 
+            	commandId="translate"
+            	id="translate"
+            	mnemonic="T">
+            </command>
+      	</menuContribution>
+   	</extension>
+   	<extension point="org.eclipse.ui.preferencePages">
+    	<page
+            id="preference"
+            name="Translate Preferences"
+            class="translate.preference.TranslatePreferencePage">
+      	</page>
+   	</extension>
+   	<extension point="org.eclipse.core.runtime.preferences">
+      	<initializer class="translate.preference.PreferenceInitializer">
+      	</initializer>
+   	</extension>
+</plugin>
