@@ -29,11 +29,18 @@ public class TranslateHandler extends AbstractHandler {
 		String appId = ActivatorUtil.getPreferenceValue(PreferenceConstants.APP_ID);
 		String secretKey = ActivatorUtil.getPreferenceValue(PreferenceConstants.SECRET_KEY);
 		if (isEmpty(appId) || isEmpty(secretKey)) {
-			MessageDialog.openInformation(window.getShell(), "提示", "请先配置翻译插件参数！\nWindow -> Preferences -> Translate Preferences");
+			MessageDialog.openInformation(window.getShell(), "提示",
+					"请先配置翻译插件参数！\nWindow -> Preferences -> Translate Preferences");
 			return null;
 		}
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
+		if (!(selection instanceof TextSelection)) {
+			return null;
+		}
 		String text = ((TextSelection) selection).getText();
+		if (isEmpty(text)) {
+			return null;
+		}
 		String result = translate(text);
 		JSONObject json = JSON.parseObject(result);
 		JSONArray jsonArray = json.getJSONArray("trans_result");

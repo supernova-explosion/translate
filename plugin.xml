@@ -11,6 +11,16 @@
       	<handler
       		commandId="translate"
         	class="translate.handler.TranslateHandler">
+        	<activeWhen>
+        		<iterate>
+			    	<instanceof value="org.eclipse.jface.text.TextSelection"/>
+				</iterate>
+	     	</activeWhen>
+         	<enabledWhen>
+         		<iterate>
+			    	<instanceof value="org.eclipse.jface.text.TextSelection"/>
+			    </iterate>
+         	</enabledWhen>
       	</handler>
    	</extension>
    	<extension point="org.eclipse.ui.bindings">
