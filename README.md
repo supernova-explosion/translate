@@ -3,7 +3,7 @@ eclipse翻译插件，支持最新版eclipse 2020-12
 
 ## 一、下载插件
 
-1、访问：https://github.com/supernova-explosion/translate/tree/main/latest
+1、访问：https://github.com/supernova-explosion/translate/releases
 
 2、下载最新插件jar包，或者下载源码自己导出
 
