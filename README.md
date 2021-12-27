@@ -1,5 +1,5 @@
 # translate
-eclipse翻译插件，支持最新版eclipse 2021-09
+eclipse翻译插件，支持最新版eclipse 2021-12
 
 ## 一、下载插件
 
