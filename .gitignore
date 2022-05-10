@@ -2,3 +2,4 @@
 /bin/**/*.class
 /.classpath
 /.project
+/bin/

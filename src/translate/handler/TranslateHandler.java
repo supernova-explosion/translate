@@ -10,6 +10,9 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.PopupDialog;
 import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -22,6 +25,8 @@ import translate.util.ActivatorUtil;
 import translate.util.TransApi;
 
 public class TranslateHandler extends AbstractHandler {
+
+	protected static final Control StyledText = null;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -37,7 +42,8 @@ public class TranslateHandler extends AbstractHandler {
 		if (!(selection instanceof TextSelection)) {
 			return null;
 		}
-		String text = ((TextSelection) selection).getText();
+		TextSelection textSelection = (TextSelection) selection;
+		String text = textSelection.getText();
 		if (isEmpty(text)) {
 			return null;
 		}
@@ -51,7 +57,15 @@ public class TranslateHandler extends AbstractHandler {
 			dstBuilder.append(dst).append("\n");
 		});
 		PopupDialog popupDialog = new PopupDialog(window.getShell(), PopupDialog.HOVER_SHELLSTYLE, true, false, false,
-				false, false, dstBuilder.toString(), "");
+				false, false, dstBuilder.toString(), "") {
+			@Override
+			protected Point getInitialLocation(Point initialSize) {
+				Control control = HandlerUtil.getActiveEditor(event).getAdapter(Control.class);
+				StyledText styledText = (StyledText) control;
+				Point point = styledText.toDisplay(styledText.getLocationAtOffset(styledText.getCaretOffset()));
+				return new Point(point.x + 2, point.y);
+			}
+		};
 		popupDialog.open();
 		return null;
 	}
