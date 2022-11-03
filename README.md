@@ -1,5 +1,5 @@
 # translate
-eclipse翻译插件，兼容版本：? ~ eclipse 2022-03
+eclipse翻译插件，兼容版本：? ~ eclipse 2022-09
 
 ## 一、下载插件
 
